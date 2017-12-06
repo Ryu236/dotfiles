@@ -112,3 +112,8 @@ endif
 " The matchit plugin makes the % command work better, but it is not backwards
 " compatible.
 packadd matchit
+
+" encoding
+set encoding=utf-8
+set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
+set fileformats=unix,dos,mac
