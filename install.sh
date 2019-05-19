@@ -2,9 +2,6 @@
 
 set -u
 DOT_DIRECTORY="${HOME}/dotfiles"
-# DOT_CONFIG_DIRECTORY=".config"
-
-cd ${DOT_CONFIG_DIRECTORY}
 
 for f in .??*
 do 
