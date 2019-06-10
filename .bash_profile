@@ -1,3 +1,6 @@
+if [ -f ~/.bashrc ]; then
+      . ~/.bashrc
+    fi
 export PATH="$HOME/.goenv/bin:$PATH"
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
