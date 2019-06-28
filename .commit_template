@@ -1,0 +1,14 @@
+# ------ Emoji Prefix ------
+# 🎉 :tada: Celebrate commit.
+# 🐛  :bug: Fixing a bug.
+# ✏️ :pencil2: Fixing typos.
+# 👍  :+1: Improve feature.
+# ✨  :sparkles:  new feature.
+# ♻️  :recycle:Refactoring code.
+# 🚿  :shower: 不要な機能・使われなくなった機能の削除
+# 💚  :green_heart: Fixing CI Build.
+# 👕  :shirt: Lintエラーの修正やコードスタイルの修正
+# 🚀  :rocket: Deploying stuff.
+# 🆙  :up: Upgrading dependencies. 
+# 🔒  :lock: Fixing security issues.
+# 👮  :cop: セキュリティ関連の改善
