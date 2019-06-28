@@ -1,3 +1,5 @@
+
+
 # ------ Emoji Prefix ------
 # 🎉  :tada: Celebrate commit.
 # 👍  :+1: Improve feature.
@@ -21,7 +23,3 @@
 # 🔒  :lock: Fixing security issues.
 # 👮  :cop: Improve about security.
 
-# ==== Format ====
-# :emoji: Subject
-#
-# Commit body...
