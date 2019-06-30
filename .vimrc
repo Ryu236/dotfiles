@@ -77,6 +77,9 @@ nnoremap j gj
 nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 
 " Tab系
