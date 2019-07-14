@@ -77,7 +77,6 @@ nnoremap j gj
 nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
-<<<<<<< HEAD
 " solarizedの有効化
 set background=dark
 let g:solarized_termcolors=256
@@ -101,8 +100,7 @@ set ignorecase
 set smartcase
 " 検索文字列入力時に順次対象文字列にヒットさせる
 set incsearch
-" 検索時に最後まで行ったら最初に戻る
-set wrapscan
+" 検索時に最後まで行ったら最初に戻る set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 " ESC連打でハイライト解除
