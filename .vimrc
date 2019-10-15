@@ -105,3 +105,17 @@ set incsearch
 set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+
+" Move window
+map sh <C-W>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+
+" Switch tab
+nmap <Tab> :tabnext<Return>
+nmap <S-tab> :tabprev<Return>
