@@ -33,6 +33,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
 
+" Typescript Syntax for Vim "
+Plug 'leafgarland/typescript-vim'
+
 " Initialize plugin system
 call plug#end()
 
