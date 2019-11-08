@@ -34,3 +34,6 @@ setopt hist_ignore_space
 
 # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
+
+# エイリアス
+alias cat='bat'
