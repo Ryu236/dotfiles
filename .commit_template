@@ -3,12 +3,12 @@
 # ------ Emoji Prefix ------
 # 🎉  :tada: Celebrate commit.
 # 👍  :+1: Improve feature.
-# ✨  :sparkles:  new feature.
+# ✨ :sparkles: new feature.
 # 🐛  :bug: Fixing a bug.
-# ♻️  :recycle:Refactoring code.
+# ♻️    :recycle: Refactoring code.
 # 🗑  :wastebasket: Removing code or files.
 # ⚡️  :zap: Improving performance.
-# ✏️  :pencil2: Fixing typos.
+# ✏️    :pencil2: Fixing typos.
 # 📝  :memo: Writing docs.
 # 💩  :poop: Writing bad code that needs to be improved.
 # 🚀  :rocket: Deploying stuff.
@@ -23,3 +23,12 @@
 # 🔒  :lock: Fixing security issues.
 # 👮  :cop: Improve about security.
 
+# ------ Message Prefix ------
+# Feat:     new feature
+# Fix:      bug fix
+# Refactor: refactoring production code
+# Pref:     improves performance
+# Style:    formatting, missing semi colons; no production code change
+# Docs:     changes to the documentation
+# Test:     adding missing tests, refactoring tests; no production code change
+# Chore:    updating grunt tasks etc; no production code change
