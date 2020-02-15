@@ -1,0 +1,17 @@
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+hook_add = 'source ~/.config/nvim/plugins/coc.rc.vim'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+depends = ['defx-icon']
+hook_add = 'source ~/.config/nvim/plugins/defx.rc.vim'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+hook_source = 'let g:defx_icons_enable_syntax_highlight = 0'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = 'source ~/.config/nvim/plugins/denite.rc.vim'
