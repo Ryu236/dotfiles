@@ -29,30 +29,107 @@ endif
 filetype plugin indent on
 syntax enable
 
-set fenc=utf-8         "文字コードをUTF-8に設定"
-set number             "行番号を表示
-set autoindent         "改行時に自動でインデントする
-set tabstop=2          "タブを何文字の空白に変換するか
-set shiftwidth=2       "自動インデント時に入力する空白の数
-set expandtab          "タブ入力を空白に変換
-set splitright         "画面を縦分割する際に右に開く
-set clipboard=unnamed  "yank した文字列をクリップボードにコピー
-set hls                "検索した文字をハイライトする
+" setting
+"文字コードをUFT-8に設定
+set fenc=utf-8
+" バックアップファイルを作らない
 set nobackup
+" スワップファイルを作らない
 set noswapfile
+" 編集中のファイルが変更されたら自動で読み直す
 set autoread
+" バッファが編集中でもその他のファイルを開けるように
 set hidden
+" 入力中のコマンドをステータスに表示する
 set showcmd
+" 括弧の補完
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+
+" 見た目系
+" 行番号を表示
+set number
+" 現在の行を強調表示
 set cursorline
+" 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
-set showmatch
+" インデントはスマートインデント
 set smartindent
+" ビープ音を可視化
+set visualbell
+" 括弧入力時の対応する括弧を表示
+set showmatch
+" ステータスラインを常に表示
+set laststatus=2
+" コマンドラインの補完
 set wildmode=list:longest
+" 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
-set list listchars=tab:\▸\-
-set wrapscan
-set hlsearch
-set incsearch
-set smartcase
+" シンタックスハイライトの有効化
+syntax enable
+" solarizedの有効化
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+" Tab系
+" 不可視文字を可視化(タブが「▸-」と表示される)
+set list
+set listchars=tab:\▸\-,trail:･,extends:>,precedes:<,nbsp:%
+"全角スペースをハイライト表示
+function! ZenkakuSpace()
+	highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
 
+if has('syntax')
+	augroup ZenkakuSpace
+		autocmd!
+		autocmd ColorScheme       * call ZenkakuSpace()
+		autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+	augroup END
+	call ZenkakuSpace()
+endif
+" 行頭以外のTab文字の表示幅（スペースいくつ分）
+set tabstop=2
+" 行頭でのTab文字の表示幅
+set shiftwidth=2
+
+
+" 検索系
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set ignorecase
+" 検索文字列に大文字が含まれている場合は区別して検索する
+set smartcase
+" 検索文字列入力時に順次対象文字列にヒットさせる
+set incsearch
+" 検索時に最後まで行ったら最初に戻る set wrapscan
+" 検索語をハイライト表示
+set hlsearch
+" ESC連打でハイライト解除
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+
+" Move window
+nmap <Space> <C-w>w
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-W>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+" Resize window
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
+
+" Switch tab
+nmap <Tab> :tabnext<Return>
+nmap <S-tab> :tabprev<Return>
