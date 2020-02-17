@@ -101,6 +101,8 @@ if has('syntax')
 	augroup END
 	call ZenkakuSpace()
 endif
+
+set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=2
 " 行頭でのTab文字の表示幅

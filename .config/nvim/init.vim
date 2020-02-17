@@ -1,5 +1,6 @@
 " python3 のPath指定
-let g:python3_host_prog = '~/.pyenv/shims/python3'
+let g:python3_host_prog = '/Users/ryu/.pyenv/shims/python3'
+let g:python_host_prog = '~/.pyenv/shims/python'
 
 " FYI : https://github.com/Shougo/shougo-s-github/tree/master/vim/rc
 let s:dein_toml = '~/.config/nvim/dein.toml'
@@ -24,7 +25,6 @@ endif
 if dein#check_install()
   call dein#install()
 endif
-
 
 filetype plugin indent on
 syntax enable
@@ -84,13 +84,15 @@ function! ZenkakuSpace()
 endfunction
 
 if has('syntax')
-	augroup ZenkakuSpace
-		autocmd!
-		autocmd ColorScheme       * call ZenkakuSpace()
-		autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
-	augroup END
-	call ZenkakuSpace()
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme       * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  augroup END
+  call ZenkakuSpace()
 endif
+
+set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=2
 " 行頭でのTab文字の表示幅
