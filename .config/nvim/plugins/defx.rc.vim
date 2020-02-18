@@ -9,11 +9,11 @@ let g:defx_icons_column_length = 2
 autocmd fileType defx call s:defx_my_settings()
   function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> <CR>
-          \ defx#so_action('open')
+          \ defx#async_action('drop')
     nnoremap <silent><buffer><expr> l
-          \ defx#do_action('open')
+          \ defx#async_action('open')
     nnoremap <silent><buffer><expr> h
-          \ defx#do_action('cd', ['..'])
+          \ defx#async_action('cd', ['..'])
     nnoremap <silent><buffer><expr> j
           \ line('.') == line('$') ? 'gg' : 'j'
     nnoremap <silent><buffer><expr> k
@@ -23,5 +23,15 @@ autocmd fileType defx call s:defx_my_settings()
     nnoremap <silent><buffer><expr> m
           \ defx#do_action('move')
     nnoremap <silent><buffer><expr> o
-          \ defx#do_action('open_or_close_tree')
+          \ defx#async_action('open_or_close_tree')
+    nnoremap <silent><buffer><expr> r
+          \ defx#do_action('rename')
+    nnoremap <silent><buffer><expr> yy
+          \ defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> ~
+          \ defx#do_action('cd')
+    nnoremap <silent><buffer><expr> N
+          \ defx#do_action('new_file')
+    nnoremap <silent><buffer><expr> c
+          \ defx#do_action('copy')
   endfunction
