@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 depends = ['defx-icons']
-hook_add = 'nnoremap <silent>sf :<C-u>Defx<CR>'
+hook_add = 'nnoremap <silent>sf :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>'
 hook_source = '''
   source ~/.config/nvim/plugins/defx.rc.vim
 '''
