@@ -53,6 +53,8 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 set number
 " 現在の行を強調表示
 set cursorline
+hi clear CursorLine
+hi CursorLine gui=underline cterm=underline
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
 " インデントはスマートインデント
@@ -69,18 +71,27 @@ set wildmode=list:longest
 nnoremap j gj
 nnoremap k gk
 " シンタックスハイライトの有効化
-syntax enable
+
+" syntax enable
 " solarizedの有効化
+" set background=dark
+" let g:solarized_termcolors=256
+" colorscheme solarized
+
+" plastic.vim theme setting
+set termguicolors
 set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+syntax on
+colorscheme plastic
+let g:lightline = { 'colorscheme': 'plastic'}
+
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list
 set listchars=tab:\▸\-,trail:･,extends:>,precedes:<,nbsp:%
 "全角スペースをハイライト表示
 function! ZenkakuSpace()
-	highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+  highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
 endfunction
 
 if has('syntax')
