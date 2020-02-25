@@ -27,7 +27,14 @@ if dein#check_install()
 endif
 
 filetype plugin indent on
-syntax enable
+syntax on
+
+" plastic.vim theme setting
+set termguicolors
+set background=dark
+colorscheme plastic
+let g:lightline = { 'colorscheme': 'plastic'}
+
 
 " setting
 "文字コードをUFT-8に設定
@@ -77,13 +84,6 @@ nnoremap k gk
 " set background=dark
 " let g:solarized_termcolors=256
 " colorscheme solarized
-
-" plastic.vim theme setting
-set termguicolors
-set background=dark
-syntax on
-colorscheme plastic
-let g:lightline = { 'colorscheme': 'plastic'}
 
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
