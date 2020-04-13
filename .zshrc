@@ -23,6 +23,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # エイリアス
 alias cat='bat'
 alias gl='git log --oneline'
+alias vim='nvim'
 
 # Other
 
