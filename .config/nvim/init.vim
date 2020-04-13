@@ -33,8 +33,17 @@ syntax on
 set termguicolors
 set background=dark
 colorscheme plastic
-let g:lightline = { 'colorscheme': 'plastic'}
 
+" vim-airline setting
+let g:airline_theme = 'simple'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#coc#enabled = 1
+let airline#extensions#coc#error_symbol = 'E:'
+let airline#extensions#coc#warning_symbol = 'W:'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 " setting
 "文字コードをUFT-8に設定
