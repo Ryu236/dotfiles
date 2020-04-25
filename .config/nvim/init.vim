@@ -45,6 +45,9 @@ let airline#extensions#coc#warning_symbol = 'W:'
 let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
 let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
+" coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " setting
 "文字コードをUFT-8に設定
 set fenc=utf-8

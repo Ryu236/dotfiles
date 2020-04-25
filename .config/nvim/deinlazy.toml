@@ -7,14 +7,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-merged = '0'
-hook_source = '''
-  source ~/.config/nvim/plugins/coc.rc.vim
-'''
-
-[[plugins]]
 repo = 'kristijanhusak/defx-icons'
 
 # [[plugins]]
