@@ -156,5 +156,6 @@ nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
 
 " Switch tab
+nmap st :tabnew<Return>
 nmap <Tab> :tabnext<Return>
 nmap <S-tab> :tabprev<Return>
