@@ -135,6 +135,9 @@ set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
+" coc-yank command
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
