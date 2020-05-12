@@ -89,13 +89,8 @@ set wildmode=list:longest
 " 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
-" シンタックスハイライトの有効化
-
-" syntax enable
-" solarizedの有効化
-" set background=dark
-" let g:solarized_termcolors=256
-" colorscheme solarized
+" コマンドラインの高さ
+set cmdheight=1
 
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
