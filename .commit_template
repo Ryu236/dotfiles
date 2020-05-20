@@ -6,9 +6,9 @@
 # ===== Emoji Prefix =====
 # 🎉  :tada: Celebrate commit.
 # 👍  :+1: Improve feature.
-# ✨ :sparkles: new feature.
+# ✨  :sparkles: new feature.
 # 🐛  :bug: Fixing a bug.
-# ♻️    :recycle: Refactoring code.
+# ♻️   :recycle: Refactoring code.
 # 🗑  :wastebasket: Removing code or files.
 # ⚡️  :zap: Improving performance.
 # 📝  :memo: Writing docs.
@@ -18,8 +18,8 @@
 # 👌  :ok_hand: Updating code due to code review changes.
 # 💚  :green_heart: Fixing CI Build.
 # 🌱  :seedling: Adding or updating seed files
-# 🚨  :shirt: Fix lint or code style errors.
-# ✅ :white_check_mark: Updating tests.
+# 👕  :shirt: Fix lint or code style errors.
+# ✅  :white_check_mark: Updating tests.
 # 💄  :lipstick: Updating the UI and style files.
 # 🔀  :twisted_rightwards_arrows: Merging branches.
 # 🆙  :up: Upgrading dependencies.
