@@ -31,8 +31,9 @@ syntax on
 
 " plastic.vim theme setting
 set termguicolors
-set background=dark
-colorscheme plastic
+" set background=dark
+" colorscheme plastic
+colorscheme duo-mini
 
 " vim-airline setting
 let g:airline_theme = 'simple'

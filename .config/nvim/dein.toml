@@ -14,6 +14,12 @@ hook_add = '''
 repo = 'flrnprz/plastic.vim'
 
 [[plugins]]
+repo = 'seesleestak/duo-mini'
+hook_add = '''
+  let g:duo_mini_bg = "#011627"
+'''
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 
 [[plugins]]
