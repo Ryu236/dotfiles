@@ -29,11 +29,12 @@ endif
 filetype plugin indent on
 syntax on
 
-" plastic.vim theme setting
+" color theme setting
 set termguicolors
 " set background=dark
 " colorscheme plastic
 colorscheme duo-mini
+" colorscheme novum
 
 " vim-airline setting
 let g:airline_theme = 'simple'

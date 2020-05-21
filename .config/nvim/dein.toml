@@ -20,6 +20,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'dylnmc/novum.vim'
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 
 [[plugins]]
