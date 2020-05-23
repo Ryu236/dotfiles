@@ -149,6 +149,11 @@ map sh <C-W>h
 map sk <C-w>k
 map sj <C-w>j
 map sl <C-w>l
+
+" Move buffers
+nmap gb :bn<CR>
+nmap gp :bp<CR>
+
 " Resize window
 nmap <C-w><left> <C-w><
 nmap <C-w><right> <C-w>>
