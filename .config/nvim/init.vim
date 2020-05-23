@@ -130,37 +130,37 @@ set incsearch
 " 検索語をハイライト表示
 set hlsearch
 " ESC連打でハイライト解除
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
 " coc-yank command
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " Split window
-nmap ss :split<Return><C-w>w
-nmap sv :vsplit<Return><C-w>w
+nnoremap ss :split<Return><C-w>w
+nnoremap sv :vsplit<Return><C-w>w
 
 " Move window
-nmap <Space> <C-w>w
-map s<left> <C-w>h
-map s<up> <C-w>k
-map s<down> <C-w>j
-map s<right> <C-w>l
-map sh <C-W>h
-map sk <C-w>k
-map sj <C-w>j
-map sl <C-w>l
+nnoremap <Space> <C-w>w
+noremap s<left> <C-w>h
+noremap s<up> <C-w>k
+noremap s<down> <C-w>j
+noremap s<right> <C-w>l
+noremap sh <C-W>h
+noremap sk <C-w>k
+noremap sj <C-w>j
+noremap sl <C-w>l
 
 " Move buffers
-nmap gb :bn<CR>
-nmap gp :bp<CR>
+nnoremap gb :bn<CR>
+nnoremap gp :bp<CR>
 
 " Resize window
-nmap <C-w><left> <C-w><
-nmap <C-w><right> <C-w>>
-nmap <C-w><up> <C-w>+
-nmap <C-w><down> <C-w>-
+nnoremap <C-w><left> <C-w><
+nnoremap <C-w><right> <C-w>>
+nnoremap <C-w><up> <C-w>+
+nnoremap <C-w><down> <C-w>-
 
 " Switch tab
-nmap st :tabnew<Return>
-nmap <Tab> :tabnext<Return>
-nmap <S-tab> :tabprev<Return>
+nnoremap st :tabnew<Return>
+nnoremap <Tab> :tabnext<Return>
+nnoremap <S-tab> :tabprev<Return>
