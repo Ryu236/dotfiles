@@ -11,16 +11,13 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'flrnprz/plastic.vim'
+repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'seesleestak/duo-mini'
 hook_add = '''
   let g:duo_mini_bg = "#011627"
 '''
-
-[[plugins]]
-repo = 'dylnmc/novum.vim'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'

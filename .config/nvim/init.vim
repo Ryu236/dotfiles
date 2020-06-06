@@ -32,9 +32,8 @@ syntax on
 " color theme setting
 set termguicolors
 " set background=dark
-" colorscheme plastic
-colorscheme duo-mini
-" colorscheme novum
+" colorscheme duo-mini
+colorscheme iceberg
 
 " vim-airline setting
 let g:airline_theme = 'simple'
