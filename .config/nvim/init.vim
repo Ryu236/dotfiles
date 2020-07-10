@@ -63,6 +63,9 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
+" emmet-vim
+let g:user_emmet_mode='a'    "enable all function in all mode.
+
 " setting
 "文字コードをUFT-8に設定
 set fenc=utf-8
