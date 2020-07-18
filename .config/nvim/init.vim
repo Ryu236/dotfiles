@@ -28,12 +28,6 @@ endif
 
 let mapleader = "\<Space>"
 
-" Configuration for terminal mode
-" enter insert mode when enter a terminal buffer
-autocmd TermOpen term://* startinsert
-" Lunch tig in terminal mode
-nnoremap <Leader>t :terminal tig<CR>
-
 filetype plugin indent on
 syntax on
 
@@ -91,7 +85,15 @@ set showcmd
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
+" ペースト時に末尾に移動
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
+" terminal mode
+" enter insert mode when enter a terminal buffer
+autocmd TermOpen term://* startinsert
+" Lunch tig in terminal mode
+nnoremap <Leader>t :terminal tig<CR>
 
 " 見た目系
 " 行番号を表示
