@@ -26,6 +26,8 @@ if dein#check_install()
   call dein#install()
 endif
 
+let mapleader = "\<Space>"
+
 filetype plugin indent on
 syntax on
 
