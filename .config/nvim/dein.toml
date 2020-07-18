@@ -20,6 +20,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'easymotion/vim-easymotion'
+
+[[plugins]]
 repo = 'mattn/emmet-vim' 
 
 [[plugins]]
