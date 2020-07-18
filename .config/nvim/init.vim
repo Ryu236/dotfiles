@@ -28,6 +28,12 @@ endif
 
 let mapleader = "\<Space>"
 
+" Configuration for terminal mode
+" enter insert mode when enter a terminal buffer
+autocmd TermOpen term://* startinsert
+" Lunch tig in terminal mode
+nnoremap <Leader>t :terminal tig<CR>
+
 filetype plugin indent on
 syntax on
 
