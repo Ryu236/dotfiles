@@ -158,6 +158,9 @@ set hlsearch
 " ESC連打でハイライト解除
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
+" ESC & save changes
+nnoremap <Leader>w <Esc>:w<CR>
+
 " coc-yank command
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
