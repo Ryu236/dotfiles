@@ -93,7 +93,7 @@ nnoremap <silent> p p`]
 " enter insert mode when enter a terminal buffer
 autocmd TermOpen term://* startinsert
 " Lunch tig in terminal mode
-nnoremap <Leader>t :terminal tig<CR>
+nnoremap <Leader>t :terminal tig status<CR>
 
 " 見た目系
 " 行番号を表示
