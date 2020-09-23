@@ -22,6 +22,8 @@ autocmd fileType defx call s:defx_my_settings()
           \ defx#do_action('quit')
     nnoremap <silent><buffer><expr> m
           \ defx#do_action('move')
+    nnoremap <silent><buffer><expr> p
+          \ defx#do_action('paste')
     nnoremap <silent><buffer><expr> o
           \ defx#async_action('open_or_close_tree')
     nnoremap <silent><buffer><expr> r
@@ -30,6 +32,10 @@ autocmd fileType defx call s:defx_my_settings()
           \ defx#do_action('yank_path')
     nnoremap <silent><buffer><expr> ~
           \ defx#do_action('cd')
+    nnoremap <silent><buffer><expr> D
+          \ defx#do_action('new_directory')
+    nnoremap <silent><buffer><expr> d
+          \ defx#do_action('remove')
     nnoremap <silent><buffer><expr> N
           \ defx#do_action('new_file')
     nnoremap <silent><buffer><expr> c
