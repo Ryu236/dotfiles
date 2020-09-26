@@ -24,6 +24,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 alias cat='bat'
 alias gl='git log --oneline'
 alias vim='nvim'
+alias g='git'
 
 # Other
 
