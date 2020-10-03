@@ -32,9 +32,9 @@ autocmd fileType defx call s:defx_my_settings()
           \ defx#do_action('yank_path')
     nnoremap <silent><buffer><expr> ~
           \ defx#do_action('cd')
-    nnoremap <silent><buffer><expr> D
-          \ defx#do_action('new_directory')
     nnoremap <silent><buffer><expr> d
+          \ defx#do_action('new_directory')
+    nnoremap <silent><buffer><expr> D
           \ defx#do_action('remove')
     nnoremap <silent><buffer><expr> N
           \ defx#do_action('new_file')
