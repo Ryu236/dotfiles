@@ -6,7 +6,7 @@ inkdrop.commands.add(document.body, "custom:new-weekly-note", async () => {
   const month = today.getMonth() + 1
   const date = today.getDate()
   const lastDate = new Date(today)
-  lastDate.setDate(today.getDate() + 5)
+  lastDate.setDate(today.getDate() + 4)
   const finishMonth = lastDate.getMonth() + 1
   const finishDate = lastDate.getDate()
   const note = {
