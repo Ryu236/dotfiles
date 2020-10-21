@@ -1,5 +1,5 @@
 call defx#custom#option('_', {
-  \ 'columns': 'indent:icons:filename',
+  \ 'columns': 'indent:icons:filename:git:size',
   \ 'show_ignored_files': 1,
   \ })
 
@@ -9,11 +9,11 @@ let g:defx_icons_column_length = 2
 autocmd fileType defx call s:defx_my_settings()
   function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> <CR>
-          \ defx#async_action('drop')
+          \ defx#do_action('drop')
     nnoremap <silent><buffer><expr> l
-          \ defx#async_action('open')
+          \ defx#do_action('open')
     nnoremap <silent><buffer><expr> h
-          \ defx#async_action('cd', ['..'])
+          \ defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> j
           \ line('.') == line('$') ? 'gg' : 'j'
     nnoremap <silent><buffer><expr> k
@@ -25,7 +25,7 @@ autocmd fileType defx call s:defx_my_settings()
     nnoremap <silent><buffer><expr> p
           \ defx#do_action('paste')
     nnoremap <silent><buffer><expr> o
-          \ defx#async_action('open_or_close_tree')
+          \ defx#do_action('open_or_close_tree')
     nnoremap <silent><buffer><expr> r
           \ defx#do_action('rename')
     nnoremap <silent><buffer><expr> yy
