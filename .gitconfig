@@ -1,0 +1,29 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = nvim
+[user]
+	name = Ryu236
+	email = ryu.adv.2360@gmail.com
+[commit]
+	template = /Users/ryu/dotfiles/.commit_template
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+	allowed = AKIAIOSFODNN7EXAMPLE
+	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[alias]
+	b = branch
+	ba = branch -a
+	c = checkout
+	s = status
+	d = diff
+	ps = !git push origin $(git rev-parse --abbrev-ref HEAD)
+	pl = !git pull origin $(git rev-parse --abbrev-ref HEAD)
+  cm = commit
+	alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+	refresh = !git fetch origin && git remote prune origin
+	d1 = diff HEAD~
+	d2 = diff HEAD~2
+	d3 = diff HEAD~3
