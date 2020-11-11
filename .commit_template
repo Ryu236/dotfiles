@@ -1,7 +1,7 @@
 
 
 # ===== Format =====
-# :emoji: prefix(scope): Commit body...
+# :emoji: prefix(scope): commit body...
 
 # ===== Emoji Prefix =====
 # 🎉  :tada: Celebrate commit.
@@ -28,14 +28,14 @@
 # 👮  :cop: Improve about security.
 
 # ===== Message Prefix =====
-# Feat:     new feature
-# Fix:      bug fix
-# Refactor: refactoring production code
-# Pref:     improves performance
-# Style:    formatting, missing semi colons; no production code change
-# Docs:     changes to the documentation
-# Test:     adding missing tests, refactoring tests; no production code change
-# Chore:    updating grunt tasks etc; no production code change
+# feat:     new feature
+# fix:      bug fix
+# refactor: refactoring production code
+# pref:     improves performance
+# style:    formatting, missing semi colons; no production code change
+# docs:     changes to the documentation
+# test:     adding missing tests, refactoring tests; no production code change
+# chore:    updating grunt tasks etc; no production code change
 
 #  ===== The Seven Rules =====
 # 1. Separate subject from body with a blank line
