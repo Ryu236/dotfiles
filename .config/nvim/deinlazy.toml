@@ -20,3 +20,4 @@ repo = 'kristijanhusak/defx-icons'
 [[plugins]]
 repo = 'fatih/vim-go'
 rev = 'release'
+on_ft = 'go'
