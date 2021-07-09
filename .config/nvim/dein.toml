@@ -4,7 +4,6 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
-rev = 'release'
 merged = 0
 hook_add = '''
   source ~/.config/nvim/plugins/coc.rc.vim
