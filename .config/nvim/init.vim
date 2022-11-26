@@ -3,6 +3,8 @@ let g:python3_host_prog = '~/.pyenv/shims/python3'
 let g:python_host_prog = '~/.pyenv/shims/python'
 
 " FYI : https://github.com/Shougo/shougo-s-github/tree/master/vim/rc
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:dein_toml = '~/.config/nvim/dein.toml'
 let s:dein_lazy_toml = '~/.config/nvim/deinlazy.toml'
 
@@ -10,10 +12,15 @@ if &compatible
   set nocompatible
 endif
 
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+" automatic installation of dein.vim
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone <https://github.com/Shougo/dein.vim>' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
+
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
   " dein.tomlを起動時ロードの設定ファイルとして読み込む
   call dein#load_toml(s:dein_toml, {'lazy': 0})
   call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
@@ -26,44 +33,51 @@ if dein#check_install()
   call dein#install()
 endif
 
+" plugin remove check
+let s:removed_plugins = dein#check_clean()
+if len(s:removed_plugins) > 0
+  call map(s:removed_plugins, "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
+endif
+
 let mapleader = "\<Space>"
 
 filetype plugin indent on
-syntax on
+syntax enable
 
 " color theme setting
 set termguicolors
 " set background=dark
 " colorscheme duo-mini
-colorscheme iceberg
+"colorscheme iceberg
 
 " vim-airline setting
 let g:airline_theme = 'simple'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#coc#enabled = 1
-let airline#extensions#coc#error_symbol = 'E:'
-let airline#extensions#coc#warning_symbol = 'W:'
-let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+"let g:airline#extensions#coc#enabled = 1
+"let airline#extensions#coc#error_symbol = 'E:'
+"let airline#extensions#coc#warning_symbol = 'W:'
+"let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+"let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 " coc-prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " coc-snippets
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? coc#_select_confirm() :
-  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+"  \ pumvisible() ? coc#_select_confirm() :
+"  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"  \ <SID>check_back_space() ? "\<TAB>" :
+"  \ coc#refresh()
+"
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
+" let g:coc_snippet_next = '<tab>'
 
 " emmet-vim
 let g:user_emmet_mode='a'    "enable all function in all mode.
@@ -162,7 +176,7 @@ nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 nnoremap <Leader>s <Esc>:w<CR>
 
 " coc-yank command
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+" nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " Split window
 nnoremap ss :split<Return><C-w>w
@@ -193,3 +207,9 @@ nnoremap <C-w><down> <C-w>-
 nnoremap st :tabnew<Return>
 nnoremap <Tab> :tabnext<Return>
 nnoremap <S-tab> :tabprev<Return>
+
+" Select all
+nmap <C-a> gg<S-v>G
+
+" Save with root permission
+command! W w !sudo tee > /dev/null %

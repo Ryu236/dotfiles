@@ -1,31 +1,25 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-merged = 0
-hook_add = '''
-  source ~/.config/nvim/plugins/coc.rc.vim
-'''
-
-[[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
-repo = 'seesleestak/duo-mini'
-hook_add = '''
-  let g:duo_mini_bg = "#011627"
-'''
+#[[plugins]]
+#repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
 [[plugins]]
-repo = 'mattn/emmet-vim' 
+repo = 'neovim/nvim-lspconfig'
+on_lua = 'lspconfig'
+
+#[[plugins]]
+#repo = 'nvim-treesitter/nvim-treesitter'
+#hook_post_update = 'TSUpdate'
+#hook_source = 'source ~/.config/nvim/plugins/treesitter.rc.vim'
+#
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
+repo = 'nvim-telescope/telescope.nvim'
+depends = ['plenary.nvim']
+hook_source = 'source ~/.config/nvim/plugins/telescope.rc.vim'
