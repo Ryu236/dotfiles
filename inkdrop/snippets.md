@@ -10,22 +10,32 @@ https://github.com/jmerle/inkdrop-snippets#usage
 */
 
 [
-  // Example 1: static snippet
+  // toggle check snippet
   {
-    trigger: '[]',
+    trigger: '[',
     content: '* [ ] ',
   },
 
-  // Example 2: dynamic snippet
+  // date snippet
   {
-    trigger: 'date',
+    trigger: 'd',
     content: () => format(new Date(), 'yyyy-MM-dd'),
   },
 
-  // Example 3: static snippet with placeholders
+  // summary snippet
   {
-    trigger: 'name',
-    content: 'My first name is $1:John$ and my last name is $2$',
+    trigger: 's',
+    content: '<details><summary> $1$ </summary> $2$ </details>',
+  },
+  
+  // table snippet
+  {
+    trigger: '|',
+    content: '| $1$        | Are           | Cool  |\
+              | ------------- |:-------------:| -----:|\
+              | col 3 is      | right-aligned | $1600 |\
+              | col 2 is      | centered      |   $12 |\
+              | zebra stripes | are neat      |    $1 |'
   },
 ];
 ```
