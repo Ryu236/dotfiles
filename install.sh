@@ -1,14 +1,15 @@
 #!/bin/bash
 
-set -u
+set -eu
 DOT_DIRECTORY="${HOME}/dotfiles"
 
 for f in .??*
 do 
   [[ "$f" == ".git" ]] && continue
+  [[ "$f" == ".gitignore" ]] && continue
   [[ "$f" == ".DS_Store" ]] && continue
-  ln -snfv ${dot_directory}/${f} ${home}/${f}
-  ln -snfv ${dot_directory}/Brewfile ${home}/Brewfile
-  ln -snfv ${dot_directory}/.config/nvim ${home}/.config/
+  ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
+  ln -snfv ${DOT_DIRECTORY}/Brewfile ${HOME}/Brewfile
+  ln -snfv ${DOT_DIRECTORY}/.config/nvim ${HOME}/.config/
   echo "$f"
 done
