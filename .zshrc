@@ -86,3 +86,5 @@ zi light sindresorhus/pure
 # After automatic unpacking it provides program "fzf".
 zi ice from"gh-r" as"program"
 zi light junegunn/fzf
+
+zinit load agkozak/zsh-z
