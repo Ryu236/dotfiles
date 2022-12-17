@@ -9,7 +9,6 @@ do
   [[ "$f" == ".gitignore" ]] && continue
   [[ "$f" == ".DS_Store" ]] && continue
   ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
-  ln -snfv ${DOT_DIRECTORY}/Brewfile ${HOME}/Brewfile
   ln -snfv ${DOT_DIRECTORY}/.config/nvim ${HOME}/.config/
   echo "$f"
 done
