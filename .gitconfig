@@ -5,7 +5,7 @@
 	name = Ryu236
 	email = ryu.adv.2360@gmail.com
 [commit]
-	template = /Users/ryu/dotfiles/.commit_template
+	template = ~/dotfiles/.commit_template
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
@@ -25,3 +25,5 @@
 	d1 = diff HEAD~
 	d2 = diff HEAD~2
 	d3 = diff HEAD~3
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
