@@ -22,3 +22,5 @@ set -xU ANDROID_HOME $HOME/Library/Android/sdk
 set -xU PATH $PATH:$ANDROID_HOME/tools
 set -xU PATH $PATH:$ANDROID_HOME/tools/bin
 set -xU PATH $PATH:$ANDROID_HOME/platform-tools
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
