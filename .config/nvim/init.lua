@@ -417,6 +417,24 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  vim.cmd [[
+  highlight LspReferenceText  ctermbg=8 guibg=#305090
+  highlight LspReferenceRead  ctermbg=8 guibg=#305090
+  highlight LspReferenceWrite ctermbg=8 guibg=#305090
+
+  highlight link LspFloatWinNormal NormalFloat
+
+  highlight FzfLuaNormal guibg=#383850
+  highlight FzfLuaBorder guibg=#383850 gui=bold
+
+  let s:bl = ['json'] " set blacklist filetype
+  augroup lsp_document_highlight
+    autocmd! * <buffer>
+    autocmd CursorHold,CursorHoldI <buffer> if index(s:bl, &ft) < 0 | lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved,CursorMovedI <buffer> if index(s:bl, &ft) < 0 | lua vim.lsp.buf.clear_references()
+  augroup END
+  ]]
 end
 
 -- Enable the following language servers
