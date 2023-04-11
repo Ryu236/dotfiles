@@ -454,7 +454,7 @@ local on_attach = function(_, bufnr)
   highlight FzfLuaNormal guibg=#383850
   highlight FzfLuaBorder guibg=#383850 gui=bold
 
-  let s:bl = ['json'] " set blacklist filetype
+  let s:bl = ['json', 'proto', 'yml', 'yaml'] " set blacklist filetype
   augroup lsp_document_highlight
     autocmd! * <buffer>
     autocmd CursorHold,CursorHoldI <buffer> if index(s:bl, &ft) < 0 | lua vim.lsp.buf.document_highlight()
@@ -474,6 +474,8 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
+  yamlls = {},
+  bufls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
