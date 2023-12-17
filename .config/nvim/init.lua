@@ -41,6 +41,12 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+if vim.loader then
+  vim.loader.enable()
+end
+
+require("config.keymaps")
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -94,7 +100,18 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = {
+      -- Snippet Engine & its associated nvim-cmp source
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+
+      -- Adds LSP completion capabilities
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+
+      -- Adds a number of user-friendly snippets
+      'rafamadriz/friendly-snippets',
+    },
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -114,20 +131,8 @@ require('lazy').setup({
     },
   },
 
-  -- { -- Theme inspired by Atom
-  --   'Mofiqul/vscode.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'vscode'
-  --   end,
-  --   opts ={
-  --     transparent = true,
-  --     italic_comments = true,
-  --     disable_nvimtree_bg = true,
-  --   },
-  -- },
+  -- Theme
   {
-    -- Theme
     'cocopon/iceberg.vim',
     priority = 1000,
     config = function()
@@ -158,11 +163,9 @@ require('lazy').setup({
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    -- See `:help ibl`
+    main = 'ibl',
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
@@ -215,11 +218,18 @@ require('lazy').setup({
     end
   },
 
+  -- Flutter config
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = true,
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
   require 'plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
 
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -227,9 +237,9 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   --
-  --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
+  --    An additionalenote is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
-  { import = 'custom.plugins' },
+  { import = 'plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -272,22 +282,6 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- vim.keymap.set('n', '<C-Space>', '<C-w>', {desc = 'Ctrl+Space is the same as Ctrl+w'})
-vim.keymap.set('n', 'sh', '<C-w>h', { desc = 'move window left' })
-vim.keymap.set('n', 'sj', '<C-w>j', { desc = 'move window down' })
-vim.keymap.set('n', 'sk', '<C-w>k', { desc = 'move window up' })
-vim.keymap.set('n', 'sl', '<C-w>l', { desc = 'move window right' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -475,6 +469,16 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   -- clangd = {},
+  -- dartls = {
+  --   onlyAnalyzeProjectsWithOpenFiles = true,
+  --   suggestFromUnimportedLibraries = true,
+  --   closingLabels = true,
+  --   flutterOutline = true,
+  --   dart = {
+  --     completeFunctionCalls = true,
+  --     showTodos = true,
+  --   },
+  -- },
   gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
@@ -517,8 +521,10 @@ mason_lspconfig.setup_handlers {
 }
 
 -- nvim-cmp setup
+-- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+require('luasnip.loaders.from_vscode').lazy_load()
 
 luasnip.config.setup {}
 
@@ -528,7 +534,12 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
   mapping = cmp.mapping.preset.insert {
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
@@ -539,7 +550,7 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
+      elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       else
         fallback()
@@ -548,7 +559,7 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      elseif luasnip.locally_jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
@@ -558,6 +569,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
   },
 }
 
