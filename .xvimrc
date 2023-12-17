@@ -1,1 +1,0 @@
-set virtualedit=onemore
