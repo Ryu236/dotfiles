@@ -115,7 +115,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',          opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -169,22 +169,28 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',         opts = {} },
+  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
-
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-  -- Only load if `make` is available. Make sure you have the system
-  -- requirements installed.
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+      -- Only load if `make` is available. Make sure you have the system
+      -- requirements installed.
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        -- NOTE: If you are having trouble with this installation,
+        --       refer to the README for telescope-fzf-native for more instructions.
+        build = 'make',
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
+      'nvim-telescope/telescope-file-browser.nvim',
+    },
   },
 
   {
@@ -296,6 +302,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+local actions = require("telescope.actions")
+local fb_actions = require("telescope").extensions.file_browser.actions
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -305,10 +313,41 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    file_browser = {
+      theme = 'dropdown',
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+        -- your custom insert mode mappings
+        ["n"] = {
+          -- your custom normal mode mappings
+          ["N"] = fb_actions.create,
+          ["h"] = fb_actions.goto_parent_dir,
+          ["/"] = function()
+            vim.cmd("startinsert")
+          end,
+          ["<C-u>"] = function(prompt_bufnr)
+            for i = 1, 10 do
+              actions.move_selection_previous(prompt_bufnr)
+            end
+          end,
+          ["<C-d>"] = function(prompt_bufnr)
+            for i = 1, 10 do
+              actions.move_selection_next(prompt_bufnr)
+            end
+          end,
+          ["<PageUp>"] = actions.preview_scrolling_up,
+          ["<PageDown>"] = actions.preview_scrolling_down,
+        },
+      },
+    },
+  },
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+pcall(require("telescope").load_extension, 'file_browser')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -326,6 +365,19 @@ vim.keymap.set('n', 'st', require('telescope.builtin').help_tags, { desc = '[S]e
 vim.keymap.set('n', 'sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', 'sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', 'sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+vim.keymap.set('n', '<leader>f', function()
+  require('telescope').extensions.file_browser.file_browser({
+    path = "%:p:h",
+    cwd = vim.fn.expand("%:p:h"),
+    respect_gitignore = false,
+    hidden = true,
+    grouped = true,
+    previewer = false,
+    initial_mode = "normal",
+    layout_config = { height = 40 },
+  })
+end, { desc = 'Open File Browser' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
