@@ -3,9 +3,10 @@
 	editor = nvim
 [user]
 	name = Ryu236
-	email = ryu.adv.2360@gmail.com
+	email = 25524362+Ryu236@users.noreply.github.com
 [commit]
 	template = ~/dotfiles/.commit_template
+	gpgsign = true
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
