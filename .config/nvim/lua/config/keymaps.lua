@@ -20,9 +20,6 @@ vim.keymap.set('n', 'sl', '<C-w>l', { desc = 'move window right' })
 vim.keymap.set("n", "+", "<C-a>")
 vim.keymap.set("n", "-", "<C-x>")
 
--- Delete a word backwards
-vim.keymap.set("n", "dw", 'vb"_d')
-
 -- Select all
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 
