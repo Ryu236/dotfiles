@@ -10,7 +10,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # エイリアス
 alias cat='bat'
 alias gl='git log --oneline'
-alias vim='nvim'
+alias n='nvim'
 alias g='git'
 alias grep='grep --color=auto'
 
