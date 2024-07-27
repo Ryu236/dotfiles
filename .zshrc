@@ -15,10 +15,10 @@ alias g='git'
 alias grep='grep --color=auto'
 
 ## exa variants
-alias ls='exa -hlGF'
-alias la='exa -abhlF'
-alias ll='exa -bhlF'
-alias lx='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
+alias ls='eza -hlGoS -F auto'
+alias la='eza -ahloS -F auto'
+alias ll='eza -hloS -F auto'
+alias lx='eza -lBhHigUmuSa -F auto --time-style=long-iso --git --color-scale'
 
 # Other
 
