@@ -27,5 +27,19 @@ colors:
     cyan:    '#95c4ce'
     white:   '#d2d4de'
 
+font:
+  # Bold font face
+  bold:
+    family: 'Hack Nerd Font'
+    style: 'Bold'
+  # Italic font face
+  italic:
+    family: 'Hack Nerd Font'
+    style: 'Italic'
+  # Normal font face
+  normal:
+    family: 'Hack Nerd Font'
+    style: 'Regular'
+
 window:
   opacity: 0.9
