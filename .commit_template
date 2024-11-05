@@ -31,7 +31,7 @@
 # feat:     new feature
 # fix:      bug fix
 # refactor: refactoring production code
-# pref:     improves performance
+# perf:     improves performance
 # style:    formatting, missing semi colons; no production code change
 # docs:     changes to the documentation
 # test:     adding missing tests, refactoring tests; no production code change
