@@ -20,6 +20,7 @@
 	d = diff
 	ps = !git push origin $(git rev-parse --abbrev-ref HEAD)
 	pl = !git pull origin $(git rev-parse --abbrev-ref HEAD)
+	amend = commit --amend --no-edit
   cm = commit
 	alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
 	refresh = !git fetch origin && git remote prune origin
