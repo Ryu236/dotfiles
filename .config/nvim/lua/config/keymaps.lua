@@ -37,3 +37,8 @@ vim.keymap.set("n", "<C-w><left>", "<C-w><")
 vim.keymap.set("n", "<C-w><right>", "<C-w>>")
 vim.keymap.set("n", "<C-w><up>", "<C-w>+")
 vim.keymap.set("n", "<C-w><down>", "<C-w>-")
+
+-- GitHub Copilot
+vim.api.nvim_set_keymap('n', '<leader>cc', ':CopilotChat<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cs', ':CopilotChatSend<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cq', ':CopilotChatClose<CR>', { noremap = true, silent = true })
