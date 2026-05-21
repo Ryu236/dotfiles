@@ -82,15 +82,16 @@ require('lazy').setup({
   --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
+    'mason-org/mason-lspconfig.nvim',
+    opts = {},
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      { 'mason-org/mason.nvim', opts = {} },
+      'neovim/nvim-lspconfig',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',    opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -496,7 +497,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagn
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -547,14 +548,21 @@ local on_attach = function(_, bufnr)
 
   highlight FzfLuaNormal guibg=#383850
   highlight FzfLuaBorder guibg=#383850 gui=bold
-
-  let s:bl = ['json', 'proto', 'yml', 'yaml'] " set blacklist filetype
-  augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold,CursorHoldI <buffer> if index(s:bl, &ft) < 0 | lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved,CursorMovedI <buffer> if index(s:bl, &ft) < 0 | lua vim.lsp.buf.clear_references()
-  augroup END
   ]]
+
+  if client and client.server_capabilities.documentHighlightProvider then
+    local group = vim.api.nvim_create_augroup('lsp_document_highlight_' .. bufnr, { clear = true })
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      group = group,
+      buffer = bufnr,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+      group = group,
+      buffer = bufnr,
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
 end
 
 -- Enable the following language servers
@@ -574,18 +582,21 @@ local servers = {
   --     showTodos = true,
   --   },
   -- },
+  biome = {},
+  buf_ls = {},
   gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  tsserver = {},
+  ts_ls = {},
+  tailwindcss = {},
   yamlls = {},
-  bufls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
   },
+  marksman = {},
 }
 
 -- Setup neovim lua configuration
@@ -601,18 +612,14 @@ require('mason').setup()
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
+vim.lsp.config('*', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-    }
-  end,
+mason_lspconfig.setup {
+  automatic_enable = true,
+  ensure_installed = vim.tbl_keys(servers),
 }
 
 -- nvim-cmp setup
