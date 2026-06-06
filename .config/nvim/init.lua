@@ -206,6 +206,19 @@ require('lazy').setup({
   },
 
   {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      vim.o.termguicolors = true
+      require('colorizer').setup {
+        user_default_options = {
+          mode = 'background', -- or 'foreground'
+          names = false, -- show color names
+        },
+      }
+    end,
+  },
+
+  {
     -- Auto pairs
     'windwp/nvim-autopairs',
     config = function()
