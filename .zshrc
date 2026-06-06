@@ -13,6 +13,7 @@ alias gl='git log --oneline'
 alias n='nvim'
 alias g='git'
 alias grep='grep --color=auto'
+alias t='tig'
 
 ## exa variants
 alias ls='eza -hlGoS -F auto'
@@ -47,6 +48,7 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home -v "17")
 export PATH=${JAVA_HOME}/bin:${PATH}
 export GPG_TTY=$(tty)
+export HOMEBREW_REQUIRE_TAP_TRUST=1
 
 
 ### Added by Zinit's installer
@@ -91,3 +93,7 @@ zi ice from"gh-r" as"program"
 zi light junegunn/fzf
 
 zinit load agkozak/zsh-z
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && . "$HOME/.bun/_bun"
+export PATH="$HOME/.local/bin:$PATH"
