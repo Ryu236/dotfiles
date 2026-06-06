@@ -48,7 +48,6 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home -v "17")
 export PATH=${JAVA_HOME}/bin:${PATH}
 export GPG_TTY=$(tty)
-export PATH="/opt/homebrew/bin/openssl/bin:$PATH"
 export HOMEBREW_REQUIRE_TAP_TRUST=1
 
 
