@@ -96,5 +96,5 @@ zi light junegunn/fzf
 zinit load agkozak/zsh-z
 
 # bun completions
-[ -s "/Users/ryu/.bun/_bun" ] && source "/Users/ryu/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && . "$HOME/.bun/_bun"
 export PATH="$HOME/.local/bin:$PATH"
