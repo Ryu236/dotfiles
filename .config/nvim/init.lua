@@ -205,6 +205,19 @@ require('lazy').setup({
   },
 
   {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      vim.o.termguicolors = true
+    end,
+    opts = {
+      user_default_options = {
+        mode = "background", -- or "foreground"
+        names = false,       -- show color names
+      },
+    },
+  },
+
+  {
     -- Auto pairs
     'windwp/nvim-autopairs',
     config = function()
@@ -331,6 +344,8 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+require 'colorizer'.setup()
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
