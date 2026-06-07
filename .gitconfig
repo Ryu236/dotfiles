@@ -19,6 +19,7 @@
 	s = switch
 	d = diff
 	ps = !git push origin $(git rev-parse --abbrev-ref HEAD)
+	psf = !git push --force-with-lease origin $(git rev-parse --abbrev-ref HEAD)
 	pl = !git pull origin $(git rev-parse --abbrev-ref HEAD)
 	amend = commit --amend --no-edit
   cm = commit
